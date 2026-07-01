@@ -1,0 +1,15 @@
+# Python bytecode from the post-gen hook
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Editor / OS cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+# Any local test renders you generate outside a real cookiecutter invocation
+/rendered/
+/_test/

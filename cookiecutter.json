@@ -1,0 +1,14 @@
+{
+    "author_full_name": "Jan Bronicki",
+    "author_email": "janbronicki@gmail.com",
+    "author_github_handle": "John15321",
+    "project_full_name": "Flatcar Container Linux 101",
+    "project_slug": "{{ cookiecutter.project_full_name.lower().replace(' ', '-').replace('—', '').replace('--', '-') }}",
+    "project_short_description": "An introduction to Flatcar Container Linux",
+    "talk_title": "Flatcar Container Linux 101",
+    "_copy_without_render": [
+        "assets/**/*",
+        "themes/*.css",
+        "themes/**/*.css"
+    ]
+}

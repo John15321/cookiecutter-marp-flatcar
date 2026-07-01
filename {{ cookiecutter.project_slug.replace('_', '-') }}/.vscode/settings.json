@@ -1,0 +1,19 @@
+{
+    "marp.themes": [],
+    "marp.html": "default",
+    "marp.enableHtml": true,
+    "markdown.preview.breaks": true,
+    "files.associations": {
+        "slides.md": "markdown"
+    },
+    "files.exclude": {
+        "node_modules": true,
+        "build": false,
+        "artifacts": false
+    },
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/build/**": true,
+        "**/artifacts/**": true
+    }
+}
