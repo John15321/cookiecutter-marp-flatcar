@@ -1,4 +1,4 @@
-{% raw %}name: Build Marp Slides
+name: Build Marp Slides
 
 on:
   push:
@@ -75,4 +75,3 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-{% endraw %}

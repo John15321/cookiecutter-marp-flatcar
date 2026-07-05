@@ -36,7 +36,12 @@ slides.md                  # slide content (Markdown)
 themes/
   flatcar.css              # theme entry point
   flatcar/{base,dark,sidebar}.css   # partials
-assets/                    # images, backgrounds, logos, photo, QR
+assets/
+  backgrounds/             # theme backgrounds (staircase, etc.)
+  diagrams/                # D2 sources + generated .svg diagrams
+  logos/                   # brand + third-party logos
+  photo/                   # individual + group photos
+  qr-code.png              # closing-slide QR
 scripts/                   # build / clean / gather-artifacts
 Containerfile              # Podman image (Marp CLI + bash + make)
 compose.yaml               # slides-builder service definition
@@ -44,21 +49,22 @@ Makefile                   # top-level workflow
 .github/workflows/         # CI: builds PDF on push, releases on tag
 ```
 
-## Slide layouts
+## Slide layouts & utility classes
 
-Set via `<!-- _class: NAME -->` on the target slide:
+See [MANUAL.md](MANUAL.md) for the full authoring reference — slide
+layouts (`cover`, `sidebar`, `agenda`, etc.), utility classes
+(`img-*`, `pin-*`, `pane-*`, `row`, `cols-*`, `callout`, …) and both
+the HTML-class and markdown-alt-text ways to apply them.
 
-| Class            | Use case                                |
-| ---------------- | --------------------------------------- |
-| *(none)*         | White slide with navy title bar         |
-| `cover`          | Navy title slide with Flatcar icon      |
-| `lead`           | Full-bleed navy for big statements      |
-| `section`        | Section divider                         |
-| `closing`        | Thank-you slide + QR code + Discord CTA |
-| `agenda`         | Left rail + bullet list                 |
-| `sidebar`        | Left rail + free-form right pane        |
-| `sidebar whoami` | Bio variant of sidebar                  |
-| `quote`          | Blockquote slide                        |
+## Diagrams
+
+[D2](https://d2lang.com) is the default diagramming tool. Put sources
+in `assets/diagrams/*.d2` and reference the generated `.svg` from your
+slides — `make build` re-renders them when `d2` is on `PATH` and falls
+back to the committed SVGs otherwise. Other tools (Mermaid, Excalidraw,
+draw.io, plain PNGs / screenshots) work too: just drop the exported
+image under `assets/` and `<img>` it in. See [MANUAL.md](MANUAL.md#diagrams-d2)
+for details.
 
 ## Releases
 

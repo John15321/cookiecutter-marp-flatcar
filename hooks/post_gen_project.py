@@ -40,6 +40,9 @@ def main():
 
     print("\n🎨 Flatcar theme lives at themes/flatcar.css (partials in themes/flatcar/).")
     print("   Slide layouts: <!-- _class: cover | lead | section | closing | agenda | sidebar | sidebar whoami | quote -->")
+    print("   Full theme + utility reference: MANUAL.md")
+
+    print("\n🖼️  Replace assets/photo/individual_photos/speaker.jpg with your own portrait.")
 
     print("\n📋 Next steps:")
     print("  cd {{ cookiecutter.project_slug }}")

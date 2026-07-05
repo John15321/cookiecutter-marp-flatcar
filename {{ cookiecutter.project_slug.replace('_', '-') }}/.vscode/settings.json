@@ -1,7 +1,12 @@
 {
-    "marp.themes": [],
-    "marp.html": "default",
-    "marp.enableHtml": true,
+    "markdown.marp.themes": [
+        "./themes/flatcar/base.css",
+        "./themes/flatcar/dark.css",
+        "./themes/flatcar/sidebar.css",
+        "./themes/flatcar.css"
+    ],
+    "markdown.marp.enableHtml": true,
+    "markdown.marp.html": "all",
     "markdown.preview.breaks": true,
     "files.associations": {
         "slides.md": "markdown"

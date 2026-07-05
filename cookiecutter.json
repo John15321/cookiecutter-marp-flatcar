@@ -1,12 +1,17 @@
 {
-    "author_full_name": "Jan Bronicki",
-    "author_email": "janbronicki@gmail.com",
-    "author_github_handle": "John15321",
+    "author_full_name": "Jane Doe",
+    "author_email": "jane.doe@example.com",
+    "author_github_handle": "janedoe",
+    "author_role": "Flatcar Maintainer",
+    "author_affiliation": "Software Engineer",
     "project_full_name": "Flatcar Container Linux 101",
     "project_slug": "{{ cookiecutter.project_full_name.lower().replace(' ', '-').replace('—', '').replace('--', '-') }}",
     "project_short_description": "An introduction to Flatcar Container Linux",
-    "talk_title": "Flatcar Container Linux 101",
+    "talk_title": "Flatcar Linux: Provisioned, Not Installed",
+    "talk_subtitle": "A declarative and immutable operating system for containers and Kubernetes",
+    "demos_url": "github.com/flatcar/flatcar-demos",
     "_copy_without_render": [
+        ".github/workflows/*.yml",
         "assets/**/*",
         "themes/*.css",
         "themes/**/*.css"
