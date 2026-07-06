@@ -42,7 +42,24 @@ def main():
     print("   Slide layouts: <!-- _class: cover | lead | section | closing | agenda | sidebar | sidebar whoami | quote -->")
     print("   Full theme + utility reference: MANUAL.md")
 
-    print("\n🖼️  Replace assets/photo/individual_photos/speaker.jpg with your own portrait.")
+    speaker_photo = "{{ cookiecutter.speaker_photo }}"
+    maintainer = "{{ cookiecutter.maintainer }}"
+    photo_dir = os.path.join("assets", "photo", "individual_photos")
+    if maintainer == "Custom (bring your own)":
+        print(
+            f"\n🖼️  Add your portrait as {photo_dir}/speaker.jpg "
+            "(the whoami slide references it)."
+        )
+        print(
+            "   Maintainer photos are still shipped alongside — handy if you want to build a collage."
+        )
+    else:
+        photo_path = os.path.join(photo_dir, speaker_photo)
+        exists = "✅" if os.path.isfile(photo_path) else "⚠️  MISSING:"
+        print(f"\n🖼️  {exists} whoami slide will use {photo_path} ({maintainer}).")
+        print(
+            "   All other maintainer photos remain in the folder — use them for a collage if you like."
+        )
 
     print("\n📋 Next steps:")
     print("  cd {{ cookiecutter.project_slug }}")

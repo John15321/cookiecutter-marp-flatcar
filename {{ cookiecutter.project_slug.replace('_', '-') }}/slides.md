@@ -33,7 +33,7 @@ author: {{ cookiecutter.author_full_name }}
 
 {{ cookiecutter.author_affiliation }}
 
-<img class="bio-photo" style="--bio-photo-size: 320px; top: 180px" src="assets/photo/individual_photos/speaker.jpg" alt="{{ cookiecutter.author_full_name }}">
+<img class="bio-photo" style="--bio-photo-size: 320px; top: 180px" src="assets/photo/individual_photos/{{ cookiecutter.speaker_photo }}" alt="{{ cookiecutter.author_full_name }}">
 
 <p class="bio-github"><img src="assets/logos/external/github-white.png" alt="GitHub">@{{ cookiecutter.author_github_handle }}</p>
 

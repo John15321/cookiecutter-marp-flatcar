@@ -1,4 +1,23 @@
 {
+    "maintainer": [
+        "John Doe (placeholder)",
+        "Custom (bring your own)",
+        "Adrian Vladu",
+        "Aleksandra Nadolska Lexi",
+        "Daniel Tall",
+        "Daniel Zatovic",
+        "Dongsu Park",
+        "Ervin Racz",
+        "Gabriel Adrian Samfira",
+        "Jan Bronicki",
+        "Jeremi Piotrowski",
+        "Kai Luke",
+        "Krzesimir Nowak",
+        "Mathieu Tortuyaux",
+        "Robin Schneider",
+        "Sayan Chowdhury",
+        "Thilo Fromm"
+    ],
     "author_full_name": "Jane Doe",
     "author_email": "jane.doe@example.com",
     "author_github_handle": "janedoe",
@@ -10,10 +29,12 @@
     "talk_title": "Flatcar Linux: Provisioned, Not Installed",
     "talk_subtitle": "A declarative and immutable operating system for containers and Kubernetes",
     "demos_url": "github.com/flatcar/flatcar-demos",
+    "speaker_photo": "{% set m = cookiecutter.maintainer %}{% if m == 'Custom (bring your own)' %}speaker.jpg{% elif m == 'John Doe (placeholder)' %}john-doe-example.png{% elif m == 'Jeremi Piotrowski' %}jeremi-piotrowski.jpg{% elif m == 'Thilo Fromm' %}thilo-fromm.png{% else %}{{ m.lower().replace(' ', '-') }}.jpeg{% endif %}",
     "_copy_without_render": [
         ".github/workflows/*.yml",
         "assets/**/*",
         "themes/*.css",
-        "themes/**/*.css"
+        "themes/**/*.css",
+        "slides.pdf"
     ]
 }

@@ -2,6 +2,11 @@
 
 {{ cookiecutter.project_short_description }}
 
+An example pre-rendered PDF ships alongside the sources at [`slides.pdf`](slides.pdf) so
+you can see the starting deck without building anything. `make build` writes
+your own re-rendered output to `build/slides.pdf` — the root-level example
+stays put as a reference; delete it once you no longer need it.
+
 ## Build
 
 The recommended path is Podman + `make`. Everything runs inside a small container image so the host only needs `podman` and `make`.
@@ -33,6 +38,7 @@ See `make help` for the full target list.
 
 ```
 slides.md                  # slide content (Markdown)
+slides.pdf                 # pre-rendered example (delete once you've made your own)
 themes/
   flatcar.css              # theme entry point
   flatcar/{base,dark,sidebar}.css   # partials
