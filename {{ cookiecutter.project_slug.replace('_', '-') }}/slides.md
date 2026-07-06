@@ -60,15 +60,22 @@ author: {{ cookiecutter.author_full_name }}
 
 ---
 
-<!-- Default content slide. Available layouts (set via `<!-- _class: ... -->` at the top of a slide):
-     cover | lead | section | closing | agenda | sidebar | sidebar whoami | quote
-     See MANUAL.md for the full theme + utility reference. -->
-
 # Your first slide
 
-- Replace this content with your own
-- See `MANUAL.md` for layouts, utilities, and asset conventions
-- Drop images into `assets/` and reference them with relative paths
+**TODO — replace this slide with your content.**
+
+```yaml
+# Drop in a systemd unit. Flatcar starts it at first boot.
+systemd:
+  units:
+    - name: nginx.service
+      enabled: true
+      contents: |
+        [Service]
+        ExecStart=/usr/bin/docker run --rm -p 80:80 nginx
+```
+
+Layouts: `cover` · `lead` · `section` · `closing` · `agenda` · `sidebar` · `sidebar whoami` · `quote` — set at the top of a slide with `<!-- _class: NAME -->`. Full reference in [`MANUAL.md`](MANUAL.md).
 
 ---
 
