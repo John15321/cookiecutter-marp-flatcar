@@ -1,20 +1,22 @@
 # 📑 Cookiecutter Marp Flatcar
 
 A cookiecutter template that scaffolds a **single-deck** Flatcar Container Linux
-Marp presentation. One talk = one repo. It ships a full working intro-to-Flatcar
-deck (whoami · community · provisioning · A/B updates · demo · thank-you) that
-you can either present as-is or gut and rewrite — the theme, utilities, and
-build pipeline stay the same.
+Marp presentation. One talk = one repo. Generated projects ship with a **minimal
+skeleton deck** (cover · whoami · agenda · section divider · content slide ·
+closing) — you fill in your own content. The theme, layout utilities, asset
+library, and build pipeline are all wired up and ready.
 
 |                                       |                                        |
 | ------------------------------------- | -------------------------------------- |
 | ![cover slide](preview/01-cover.png)  | ![agenda slide](preview/02-listing.png) |
 | ![code slide](preview/03-code.png)    | ![closing slide](preview/04-closing.png) |
 
-Full example rendered PDF: **[`preview/slides.pdf`](preview/slides.pdf)**
-(24 slides, produced by `cookiecutter --no-input`). The same PDF also ships
-inside every generated project at its root, next to `slides.md`, so you can
-see the starting deck without running a build.
+The screenshots above (and the accompanying **[`preview/slides.pdf`](preview/slides.pdf)**)
+showcase what the theme is capable of — code slides, sidebar layouts, logo
+walls, custom SVG diagrams — but **generated projects do NOT include this
+content**. You start from a clean skeleton. Every generated project also ships
+a pre-rendered `slides.pdf` at its root that matches the skeleton, so you can
+see the starting point without running a build.
 
 ## Who is this for?
 
@@ -32,22 +34,32 @@ John Doe placeholder for a quick preview) and drop your own picture in.
 
 ## What you get
 
-The generated deck is a **generic Flatcar 101** talk — cover, whoami, agenda,
-community/CNCF, "runs everywhere", provisioning story, A/B updates diagram,
-Butane example, demos + thank-you. You can present it as-is at a meetup, or
-gut it and use it as scaffolding for your own talk.
+A **minimal skeleton deck** with your identity already filled in:
 
-It also doubles as a **showcase of what the template + Marp can do**: every
-slide layout (`cover`, `lead`, `section`, `closing`, `agenda`, `sidebar`,
-`sidebar whoami`, `quote`) plus most utility classes (`img-*`, `pin-*`,
-`pane-*`, `row`, `cols-*`, `callout`, `logo-wall`, `ab-slide`, …) is used
-somewhere in the deck — so before you rewrite it, skim it to see which
-building blocks are available. Full reference in
-[`MANUAL.md`](%7B%7B%20cookiecutter.project_slug.replace%28%27_%27%2C%20%27-%27%29%20%7D%7D/MANUAL.md).
+1. **Cover** — talk title, subtitle, your name
+2. **whoami** — your photo, role, affiliation, GitHub handle
+3. **Agenda** — placeholder bullets to overwrite
+4. **Section divider** — example of chapter breaks
+5. **Content slide** — one blank slide with a comment listing the available
+   `<!-- _class: … -->` layouts
+6. **Closing** — thank-you slide with Flatcar community links + Discord CTA
+
+No canned Flatcar 101 content, no example bullets to reverse-engineer —
+you own the narrative from slide 4 onwards.
+
+To see what the theme is capable of (code slides, sidebar layouts, logo
+walls, A/B update diagrams, custom SVG), open
+**[`preview/slides.pdf`](preview/slides.pdf)**. All 9 slide layouts
+(`cover`, `lead`, `section`, `closing`, `agenda`, `sidebar`,
+`sidebar whoami`, `quote`) and every utility class (`img-*`, `pin-*`,
+`pane-*`, `row`, `cols-*`, `callout`, `logo-wall`, `ab-slide`, …) are
+documented in [`MANUAL.md`](%7B%7B%20cookiecutter.project_slug.replace%28%27_%27%2C%20%27-%27%29%20%7D%7D/MANUAL.md).
 
 ## What's inside
 
-- `slides.md` at the repo root, complete with a working set of intro slides
+- `slides.md` at the repo root — a minimal skeleton (cover, whoami, agenda,
+  section divider, one content slide, closing) with your maintainer photo,
+  name, and links already wired in
 - `themes/flatcar.css` + `themes/flatcar/{base,dark,sidebar}.css` — the Flatcar
   theme with 9 slide layouts + utility classes (`img-*`, `pin-*`, `pane-*`,
   `row`, `cols-*`, `callout`, `logo-wall`, `ab-slide`, …)
