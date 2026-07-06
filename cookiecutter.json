@@ -18,7 +18,7 @@
         "Sayan Chowdhury",
         "Thilo Fromm"
     ],
-    "author_full_name": "Jane Doe",
+    "author_full_name": "{% if cookiecutter.maintainer in ['John Doe (placeholder)', 'Custom (bring your own)'] %}Jane Doe{% else %}{{ cookiecutter.maintainer }}{% endif %}",
     "author_email": "jane.doe@example.com",
     "author_github_handle": "janedoe",
     "author_role": "Flatcar Maintainer",
@@ -29,7 +29,6 @@
     "talk_title": "Flatcar Linux: Provisioned, Not Installed",
     "talk_subtitle": "A declarative and immutable operating system for containers and Kubernetes",
     "demos_url": "github.com/flatcar/flatcar-demos",
-    "speaker_photo": "{% set m = cookiecutter.maintainer %}{% if m == 'Custom (bring your own)' %}speaker.jpg{% elif m == 'John Doe (placeholder)' %}john-doe-example.png{% elif m == 'Jeremi Piotrowski' %}jeremi-piotrowski.jpg{% elif m == 'Thilo Fromm' %}thilo-fromm.png{% else %}{{ m.lower().replace(' ', '-') }}.jpeg{% endif %}",
     "_copy_without_render": [
         ".github/workflows/*.yml",
         "assets/**/*",

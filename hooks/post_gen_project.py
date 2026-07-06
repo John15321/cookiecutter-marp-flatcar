@@ -42,8 +42,16 @@ def main():
     print("   Slide layouts: <!-- _class: cover | lead | section | closing | agenda | sidebar | sidebar whoami | quote -->")
     print("   Full theme + utility reference: MANUAL.md")
 
-    speaker_photo = "{{ cookiecutter.speaker_photo }}"
     maintainer = "{{ cookiecutter.maintainer }}"
+    _photo_overrides = {
+        "Custom (bring your own)": "speaker.jpg",
+        "John Doe (placeholder)": "john-doe-example.png",
+        "Jeremi Piotrowski": "jeremi-piotrowski.jpg",
+        "Thilo Fromm": "thilo-fromm.png",
+    }
+    speaker_photo = _photo_overrides.get(
+        maintainer, maintainer.lower().replace(" ", "-") + ".jpeg"
+    )
     photo_dir = os.path.join("assets", "photo", "individual_photos")
     if maintainer == "Custom (bring your own)":
         print(

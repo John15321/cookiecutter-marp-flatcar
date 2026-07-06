@@ -33,7 +33,9 @@ author: {{ cookiecutter.author_full_name }}
 
 {{ cookiecutter.author_affiliation }}
 
-<img class="bio-photo" style="--bio-photo-size: 320px; top: 180px" src="assets/photo/individual_photos/{{ cookiecutter.speaker_photo }}" alt="{{ cookiecutter.author_full_name }}">
+{%- set _photo_overrides = {'Custom (bring your own)': 'speaker.jpg', 'John Doe (placeholder)': 'john-doe-example.png', 'Jeremi Piotrowski': 'jeremi-piotrowski.jpg', 'Thilo Fromm': 'thilo-fromm.png'} %}
+{%- set _speaker_photo = _photo_overrides.get(cookiecutter.maintainer, cookiecutter.maintainer.lower().replace(' ', '-') + '.jpeg') %}
+<img class="bio-photo" style="--bio-photo-size: 320px; top: 180px" src="assets/photo/individual_photos/{{ _speaker_photo }}" alt="{{ cookiecutter.author_full_name }}">
 
 <p class="bio-github"><img src="assets/logos/external/github-white.png" alt="GitHub">@{{ cookiecutter.author_github_handle }}</p>
 
