@@ -33,7 +33,6 @@
         ".github/workflows/*.yml",
         "assets/**/*",
         "themes/*.css",
-        "themes/**/*.css",
-        "slides.pdf"
+        "themes/**/*.css"
     ]
 }

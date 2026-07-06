@@ -32,7 +32,9 @@ def main():
     make_scripts_executable()
 
     print("\n🔍 Checking required tools...")
-    check_tool("podman", "install 'podman' to use 'make build' / 'make setup'")
+    has_podman = check_tool("podman", "install 'podman' for 'make build' / 'make setup' (or use Docker)")
+    if not has_podman:
+        check_tool("docker", "install Docker for 'make build' / 'make setup' (or use Podman)")
     check_tool(
         "node",
         "install Node.js (nodejs.org, or `dnf install nodejs npm` / `apt install nodejs npm` / `brew install node`) to use 'make native-build' / 'make watch'",

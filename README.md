@@ -14,9 +14,8 @@ library, and build pipeline are all wired up and ready.
 The screenshots above (and the accompanying **[`preview/slides.pdf`](preview/slides.pdf)**)
 showcase what the theme is capable of — code slides, sidebar layouts, logo
 walls, custom SVG diagrams — but **generated projects do NOT include this
-content**. You start from a clean skeleton. Every generated project also ships
-a pre-rendered `slides.pdf` at its root that matches the skeleton, so you can
-see the starting point without running a build.
+content**. You start from a clean skeleton with no pre-rendered PDF: run
+`make build` once and you get your first `build/slides.pdf`.
 
 ## Who is this for?
 
@@ -72,12 +71,39 @@ documented in [`MANUAL.md`](%7B%7B%20cookiecutter.project_slug.replace%28%27_%27
 
 ## Usage
 
+### 1. Install cookiecutter
+
+[Cookiecutter](https://cookiecutter.readthedocs.io/) is a small Python CLI that
+generates a new project directory from a template like this one, answering a
+short list of prompts (name, title, GitHub handle, …) and dropping a ready-to-
+build repo in your current folder. You only need it once — after generation the
+project is a normal git repo with a `Makefile`, no runtime dependency on
+cookiecutter.
+
+Install with `pipx` (recommended — isolates the CLI in its own venv):
+
+```bash
+pipx install cookiecutter
+```
+
+Or with `pip` / your distro package manager (`brew install cookiecutter`,
+`dnf install python3-cookiecutter`, `apt install cookiecutter`). Full
+instructions: [cookiecutter installation
+guide](https://cookiecutter.readthedocs.io/en/latest/installation.html).
+
+### 2. Generate your talk
+
 ```bash
 cookiecutter gh:John15321/cookiecutter-marp-flatcar
 cd <your-project-slug>
-make setup        # one-time container image build
+make setup        # one-time container image build (Podman or Docker)
 make build        # → build/slides.pdf
 ```
+
+The `gh:` prefix tells cookiecutter to fetch the template from GitHub. You can
+also pass a local path (`cookiecutter ./cookiecutter-marp-flatcar`) if you've
+cloned it. Answer the prompts (see the table below) and cookiecutter drops
+your project under `./<project_slug>/`.
 
 ## Prompts
 

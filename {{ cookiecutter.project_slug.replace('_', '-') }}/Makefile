@@ -1,4 +1,4 @@
-# Makefile for Marp Slides — Podman-only
+# Makefile for Marp Slides — works with Podman (preferred) or Docker.
 
 .PHONY: all build clean artifacts help test ci-build ci-artifacts setup \
         native-build native-clean native-artifacts watch preview shell \
@@ -6,29 +6,33 @@
 
 # Configuration
 SCRIPTS_DIR = scripts
-ENGINE      = podman
-# `podman compose` delegates to whichever external compose provider is on the
-# system (podman-compose script, or the docker-compose / compose plugin binary).
-# Either way the *engine* running containers is Podman.
-# Override with: make build COMPOSE="podman-compose"
-COMPOSE    ?= podman compose
+# Container engine auto-detect: podman first, then docker. Override with:
+#   make build ENGINE=docker
+ENGINE     ?= $(shell command -v podman > /dev/null 2>&1 && echo podman || (command -v docker > /dev/null 2>&1 && echo docker))
+# Compose follows the engine. Both `podman compose` and `docker compose` invoke
+# a v2 compose plugin (podman delegates to whichever external provider is
+# installed; docker uses its bundled cli-plugin). Override if needed with:
+#   make build COMPOSE="podman-compose"   or   COMPOSE="docker-compose"
+COMPOSE    ?= $(ENGINE) compose
 
 # Detect whether we're already inside the build container (skip wrapping).
 CONTAINER_ENV := $(shell [ -f /run/.containerenv ] && echo true || echo false)
 
 # Function: run a command inside the slides-builder container (or natively if
-# we're already inside it). Bails out with install instructions if podman is
-# missing.
+# we're already inside it). Bails out with install instructions if no container
+# engine is available.
 # Usage: $(call run-in-container,command,description)
 define run-in-container
 	@if [ "$(CONTAINER_ENV)" = "true" ]; then \
 		echo "$(2) (inside container)..."; \
 		$(1); \
-	elif ! command -v podman > /dev/null 2>&1; then \
-		echo "❌ Error: podman is not installed."; \
+	elif [ -z "$(ENGINE)" ]; then \
+		echo "❌ Error: no container engine found (looked for podman, docker)."; \
 		echo ""; \
 		echo "On Fedora:  sudo dnf install -y podman podman-compose"; \
 		echo "On Ubuntu:  sudo apt install -y podman podman-compose"; \
+		echo "            (or: sudo apt install -y docker.io docker-compose-plugin)"; \
+		echo "On macOS:   brew install podman  (or install Docker Desktop)"; \
 		echo "Then:       make setup && make build"; \
 		echo ""; \
 		echo "Or to build without a container (requires Node.js):"; \
@@ -43,18 +47,19 @@ endef
 # Default target
 all: build
 
-# First-time setup: verify podman is usable and build the image.
+# First-time setup: verify the engine is usable and build the image.
 setup:
-	@echo "📦 Setting up Podman build environment..."
-	@if ! command -v podman > /dev/null 2>&1; then \
-		echo "❌ Error: podman is not installed."; \
+	@echo "📦 Setting up container build environment..."
+	@if [ -z "$(ENGINE)" ]; then \
+		echo "❌ Error: no container engine found (looked for podman, docker)."; \
 		echo "On Fedora: sudo dnf install -y podman podman-compose"; \
 		echo "On Ubuntu: sudo apt install -y podman podman-compose"; \
+		echo "           (or: sudo apt install -y docker.io docker-compose-plugin)"; \
 		exit 1; \
 	fi
-	@if ! podman info > /dev/null 2>&1; then \
-		echo "❌ Error: podman is installed but not usable (rootless not initialised?)."; \
-		echo "Try running 'podman info' once interactively, then re-run 'make setup'."; \
+	@if ! $(ENGINE) info > /dev/null 2>&1; then \
+		echo "❌ Error: $(ENGINE) is installed but not usable."; \
+		echo "Try running '$(ENGINE) info' once interactively, then re-run 'make setup'."; \
 		exit 1; \
 	fi
 	@echo "Engine : $(ENGINE)"
@@ -134,8 +139,8 @@ preview:
 	@npm run preview
 
 help:
-	@echo "Marp Slides Build System (Podman)"
-	@echo "================================="
+	@echo "Marp Slides Build System (Podman or Docker)"
+	@echo "==========================================="
 	@echo ""
 	@echo "Engine : $(ENGINE)"
 	@echo "Compose: $(COMPOSE)"
@@ -145,7 +150,7 @@ help:
 	@echo "  make build    - Build slides.pdf (inside container)"
 	@echo "  make clean    - Clean build artifacts (inside container)"
 	@echo ""
-	@echo "📋 Main Targets (containerised via Podman):"
+	@echo "📋 Main Targets (containerised, auto-detects podman/docker):"
 	@echo "  build         - Build slides.pdf"
 	@echo "  clean         - Clean all build files and directories"
 	@echo "  artifacts     - Gather build artifacts for distribution"
@@ -168,4 +173,6 @@ help:
 	@echo "  watch     - Rebuild on save (npm run watch)"
 	@echo "  preview   - Live preview in browser (npm run preview)"
 	@echo ""
-	@echo "💡 Override the compose runtime if needed:  make build COMPOSE=\"podman-compose\""
+	@echo "💡 Override the engine or compose runtime if needed:"
+	@echo "      make build ENGINE=docker"
+	@echo "      make build COMPOSE=\"podman-compose\""
