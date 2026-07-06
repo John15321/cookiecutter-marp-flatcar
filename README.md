@@ -1,21 +1,20 @@
 # 📑 Cookiecutter Marp Flatcar
 
 A cookiecutter template that scaffolds a **single-deck** Flatcar Container Linux
-Marp presentation. One talk = one repo. Generated projects ship with a **minimal
-skeleton deck** (cover · whoami · agenda · section divider · content slide ·
-closing) — you fill in your own content. The theme, layout utilities, asset
-library, and build pipeline are all wired up and ready.
+Marp presentation. One talk = one repo. Generated projects ship with a **full,
+ready-to-give Flatcar 101 talk** — the same deck used at DevOps Days Kraków
+2026 — with your name, photo, and links already wired in. Keep it as-is,
+tweak it, or gut it and start over. The theme, layout utilities, asset
+library, and build pipeline come with it.
 
 |                                       |                                        |
 | ------------------------------------- | -------------------------------------- |
 | ![cover slide](preview/01-cover.png)  | ![agenda slide](preview/02-listing.png) |
 | ![code slide](preview/03-code.png)    | ![closing slide](preview/04-closing.png) |
 
-The screenshots above (and the accompanying **[`preview/slides.pdf`](preview/slides.pdf)**)
-showcase what the theme is capable of — code slides, sidebar layouts, logo
-walls, custom SVG diagrams — but **generated projects do NOT include this
-content**. You start from a clean skeleton with no pre-rendered PDF: run
-`make build` once and you get your first `build/slides.pdf`.
+See **[`preview/slides.pdf`](preview/slides.pdf)** for the full rendered deck.
+Run `make build` right after generation and you'll get an identical
+`build/slides.pdf` with your name on the cover.
 
 ## Who is this for?
 
@@ -33,48 +32,49 @@ John Doe placeholder for a quick preview) and drop your own picture in.
 
 ## What you get
 
-A **minimal skeleton deck** with your identity already filled in:
+A **complete Flatcar 101 deck** with your identity already filled in — ~24
+slides covering the community, what Flatcar is, provisioning with Butane,
+immutability, A/B updates, and channels. Structure:
 
 1. **Cover** — talk title, subtitle, your name
 2. **whoami** — your photo, role, affiliation, GitHub handle
-3. **Agenda** — placeholder bullets to overwrite
-4. **Section divider** — example of chapter breaks
-5. **Content slide** — one blank slide with a comment listing the available
-   `<!-- _class: … -->` layouts
-6. **Closing** — thank-you slide with Flatcar community links + Discord CTA
+3. **Agenda** — the five sections below
+4. **Community stewarded** — CNCF governance, upstream partners, cloud
+   coverage, production users (logo walls)
+5. **How Flatcar Works** — the flatcar train pun, UX comparison, Butane
+   config, boot-in-a-VM demo, workflow diagram
+6. **Immutable by design & A/B updates** — read-only rootfs, dm-verity,
+   animated A/B slot diagram, release channels
+7. **Demos!** — placeholder pointing at your demos URL
+8. **Closing** — thank-you slide with Flatcar community links + Discord CTA
 
-No canned Flatcar 101 content, no example bullets to reverse-engineer —
-you own the narrative from slide 4 onwards.
-
-To see what the theme is capable of (code slides, sidebar layouts, logo
-walls, A/B update diagrams, custom SVG), open
-**[`preview/slides.pdf`](preview/slides.pdf)**. All 9 slide layouts
-(`cover`, `lead`, `section`, `closing`, `agenda`, `sidebar`,
-`sidebar whoami`, `quote`) and every utility class (`img-*`, `pin-*`,
-`pane-*`, `row`, `cols-*`, `callout`, `logo-wall`, `ab-slide`, …) are
-documented in [`MANUAL.md`](%7B%7B%20cookiecutter.project_slug.replace%28%27_%27%2C%20%27-%27%29%20%7D%7D/MANUAL.md).
+Every slide is production-tested content you can keep, edit, or delete.
+All 9 slide layouts (`cover`, `lead`, `section`, `closing`, `agenda`,
+`sidebar`, `sidebar whoami`, `quote`) and every utility class (`img-*`,
+`pin-*`, `pane-*`, `row`, `cols-*`, `callout`, `logo-wall`, `ab-slide`, …)
+are demonstrated in the deck and documented in
+[`MANUAL.md`](%7B%7B%20cookiecutter.project_slug.replace%28%27_%27%2C%20%27-%27%29%20%7D%7D/MANUAL.md).
 
 ## Full worked example
 
-A complete talk built from this template lives under
-[`examples/devops-days-krakow-2026/`](examples/devops-days-krakow-2026/) —
-_"Flatcar Linux: Provisioned, Not Installed"_ (DevOps Days Kraków 2026).
-It's a real, delivered deck, not a demo scaffold, so you can see how the
-skeleton grows into a finished ~24-slide talk:
+The deck this template ships is the same one delivered at DevOps Days
+Kraków 2026 — _"Flatcar Linux: Provisioned, Not Installed"_
+(by Jan Bronicki). A copy of the rendered PDF and source markdown lives
+under [`examples/devops-days-krakow-2026/`](examples/devops-days-krakow-2026/)
+so you can preview the finished result on GitHub before generating:
 
 - **[Rendered PDF](examples/devops-days-krakow-2026/slides.pdf)** — the built
   output (6.9 MB), viewable directly on GitHub
-- **[`slides.md`](examples/devops-days-krakow-2026/slides.md)** — the source,
-  with concrete uses of every layout and utility class
+- **[`slides.md`](examples/devops-days-krakow-2026/slides.md)** — the source
 
 The full project (assets, themes, Makefile, CI) lives in its own repo:
 [**John15321/devops-days-krakow-2026**](https://github.com/John15321/devops-days-krakow-2026).
 
 ## What's inside
 
-- `slides.md` at the repo root — a minimal skeleton (cover, whoami, agenda,
-  section divider, one content slide, closing) with your maintainer photo,
-  name, and links already wired in
+- `slides.md` at the repo root — a full Flatcar 101 talk (cover, whoami,
+  agenda, community, how-it-works, immutability + A/B updates, demos,
+  closing) with your maintainer photo, name, and links already wired in
 - `themes/flatcar.css` + `themes/flatcar/{base,dark,sidebar}.css` — the Flatcar
   theme with 9 slide layouts + utility classes (`img-*`, `pin-*`, `pane-*`,
   `row`, `cols-*`, `callout`, `logo-wall`, `ab-slide`, …)
