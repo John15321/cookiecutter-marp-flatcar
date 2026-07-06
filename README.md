@@ -54,6 +54,22 @@ walls, A/B update diagrams, custom SVG), open
 `pane-*`, `row`, `cols-*`, `callout`, `logo-wall`, `ab-slide`, …) are
 documented in [`MANUAL.md`](%7B%7B%20cookiecutter.project_slug.replace%28%27_%27%2C%20%27-%27%29%20%7D%7D/MANUAL.md).
 
+## Full worked example
+
+A complete talk built from this template lives under
+[`examples/devops-days-krakow-2026/`](examples/devops-days-krakow-2026/) —
+_"Flatcar Linux: Provisioned, Not Installed"_ (DevOps Days Kraków 2026).
+It's a real, delivered deck, not a demo scaffold, so you can see how the
+skeleton grows into a finished ~24-slide talk:
+
+- **[Rendered PDF](examples/devops-days-krakow-2026/slides.pdf)** — the built
+  output (6.9 MB), viewable directly on GitHub
+- **[`slides.md`](examples/devops-days-krakow-2026/slides.md)** — the source,
+  with concrete uses of every layout and utility class
+
+The full project (assets, themes, Makefile, CI) lives in its own repo:
+[**John15321/devops-days-krakow-2026**](https://github.com/John15321/devops-days-krakow-2026).
+
 ## What's inside
 
 - `slides.md` at the repo root — a minimal skeleton (cover, whoami, agenda,
