@@ -16,6 +16,14 @@ See **[`preview/slides.pdf`](preview/slides.pdf)** for the full rendered deck.
 Run `make build` right after generation and you'll get an identical
 `build/slides.pdf` with your name on the cover.
 
+> **⚠️ Download the PDF, don't view it inline on GitHub.** GitHub's built-in
+> PDF viewer drops some of the CSS-driven effects the theme relies on
+> (backgrounds, `pin-*` positioning, the animated A/B update diagram,
+> overlay SVGs, custom fonts, some flex/grid layouts). The PNGs above are
+> the accurate reference. To see the deck exactly as it renders in Marp,
+> **download `slides.pdf`** and open it in a native PDF viewer (Preview,
+> Adobe, Firefox, Chrome, etc.).
+
 ## Who is this for?
 
 **Everyone who wants to talk about Flatcar.** You don't need to be a
@@ -64,7 +72,9 @@ under [`examples/devops-days-krakow-2026/`](examples/devops-days-krakow-2026/)
 so you can preview the finished result on GitHub before generating:
 
 - **[Rendered PDF](examples/devops-days-krakow-2026/slides.pdf)** — the built
-  output (6.9 MB), viewable directly on GitHub
+  output (6.9 MB), viewable directly on GitHub _(but see the download note
+  above — GitHub's inline PDF viewer drops some CSS-driven effects;
+  download the file for accurate rendering)_
 - **[`slides.md`](examples/devops-days-krakow-2026/slides.md)** — the source
 
 The full project (assets, themes, Makefile, CI) lives in its own repo:
