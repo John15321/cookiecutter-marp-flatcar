@@ -7,10 +7,10 @@ ready-to-give Flatcar 101 talk** — the same deck used at DevOps Days Kraków
 tweak it, or gut it and start over. The theme, layout utilities, asset
 library, and build pipeline come with it.
 
-|                                       |                                        |
-| ------------------------------------- | -------------------------------------- |
-| ![cover slide](preview/01-cover.png)  | ![agenda slide](preview/02-listing.png) |
-| ![code slide](preview/03-code.png)    | ![closing slide](preview/04-closing.png) |
+|                                       |                                        |                                            |
+| ------------------------------------- | -------------------------------------- | ------------------------------------------ |
+| ![cover slide](preview/01-cover.png)  | ![agenda slide](preview/02-listing.png) | ![runs everywhere](preview/05-logo-wall.png) |
+| ![code slide](preview/03-code.png)    | ![A/B updates](preview/06-ab-updates.png) | ![closing slide](preview/04-closing.png) |
 
 See **[`preview/slides.pdf`](preview/slides.pdf)** for the full rendered deck.
 Run `make build` right after generation and you'll get an identical
